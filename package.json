@@ -23,7 +23,10 @@
   },
   "devDependencies": {
     "grunt": "^1.0.4",
+    "grunt-contrib-csslint": "^2.0.0",
     "grunt-contrib-jshint": "^2.1.0",
-    "grunt-contrib-sass": "^1.0.0"
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-w3c-html-validation": "^0.1.9"
   }
 }
