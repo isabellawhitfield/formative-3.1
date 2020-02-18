@@ -1,3 +1,4 @@
 node_modules/
 newsapi.json
 .sass-cache/
+validation-status.json

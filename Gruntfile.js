@@ -22,6 +22,7 @@ module.exports = function (grunt) {
     validation: {
       options: {
         generateReport: false,
+        reportpath: false,
       },
       files: {
         src: ['index.html'],
