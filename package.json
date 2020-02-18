@@ -20,5 +20,9 @@
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-jshint": "^2.1.0"
   }
 }
