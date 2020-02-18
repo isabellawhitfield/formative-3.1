@@ -6,12 +6,24 @@ module.exports = function(grunt) {
       jshint: {
         all: ['Gruntfile.js', 'js/*.js']
       }
+      sass: {                              // Task
+        dist: {                            // Target
+          options: {                       // Target options
+            style: 'expanded'
+          },
+          files: {                         // Dictionary of files
+            'css/style.css': 'sass/style.scss'       // 'destination': 'source'
+           
+          }
+        }
+      }
     });
   
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-sass');
   
     // Default task(s).
-    grunt.registerTask('default', ['jshint']);
+    grunt.registerTask('default', ['jshint', 'sass']);
   
   };
