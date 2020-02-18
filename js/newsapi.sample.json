@@ -1,0 +1,2 @@
+// Rename to 'newsapi.json'
+apiKey = '[{"key" : "API_KEY_GOES_HERE"}]';
