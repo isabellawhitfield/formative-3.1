@@ -3,16 +3,16 @@ module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
     //   pkg: grunt.file.readJSON('package.json'),
-   
+
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
-
       build: {
-        src: 'js/script.js',
-        dest: 'js/script.min.js'
-      }
+        files: {
+          'js/script.min.js': ['js/script.js']
+        },
+      },
     },
- 
+
     jshint: {
       options: {
         esversion: 6,
@@ -39,15 +39,15 @@ module.exports = function (grunt) {
       lax: {
         options: {
           import: false,
-          'order-alphabetical' : false
+          'order-alphabetical': false
         },
-        src: ['css/*.css','!*.min.css' ]
+        src: ['css/*.css', '!*.min.css']
       }
     },
     watch: {
       all: {
         files: ['js/*.js', 'sass/*.scss', 'css/style.css', 'index.html'],
-        tasks: ['jshint', 'sass', 'validation', 'csslint'],
+        tasks: ['uglify', 'cssmin', 'imagemin', 'htmlmin'],
         options: {
           spawn: false,
         }
@@ -65,61 +65,39 @@ module.exports = function (grunt) {
       }
     },
     imagemin: {
-      static: {
-          options: {
-              optimizationLevel: 3,
-              svgoPlugins: [{removeViewBox: false}],
-              // use: [mozjpeg()] // Example plugin usage
-          },
-          files: {
-              'dist/img.png': 'src/img.png',
-              'dist/img.jpg': 'src/img.jpg',
-              'dist/img.gif': 'src/img.gif'
-          }
-      },
       dynamic: {
-          files: [{
-              expand: true,
-              cwd: 'src/',
-              src: ['**/*.{png,jpg,gif}'],
-              dest: 'dist/'
-          }]
-      }
-  },
-  htmlmin: {                                     // Task
-    dist: {                                      // Target
-      options: {                                 // Target options
-        removeComments: true,
-        collapseWhitespace: true
-      },
-      files: {                                   // Dictionary of files
-        'dist/index.html': 'src/index.html',     // 'destination': 'source'
-        'dist/contact.html': 'src/contact.html'
+        files: [{
+          expand: true,
+          cwd: 'images',
+          src: ['*.{png,jpg,gif}'],
+          dest: 'images/min'
+        }]
       }
     },
-    dev: {                                       // Another target
-      files: {
-        'dist/index.html': 'src/index.html',
-        'dist/contact.html': 'src/contact.html'
+    htmlmin: {                                     // Task
+      dev: {                                       // Another target
+        options: {                                 // Target options
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          'index.min.html': 'index.html',
+        }
       }
     }
-  }
-
-});
+  });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-uglify-es');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
   // Default task(s).
-  grunt.registerTask('ugly', ['uglify', 'cssmin', 'imagemin','htmlmin', 'imagemin']);
+  grunt.registerTask('ugly', ['uglify', 'cssmin', 'imagemin', 'htmlmin']);
   grunt.registerTask('default', ['watch']);
-  
-
 };

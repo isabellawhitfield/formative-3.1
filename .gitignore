@@ -1,4 +1,12 @@
+# npm
 node_modules/
+
+# newsapi key
 newsapi.json
+
+# Grunt processed files
 .sass-cache/
-validation-status.json
+images/min/
+js/*.min.js
+css/*.min.css
+*.min.html
