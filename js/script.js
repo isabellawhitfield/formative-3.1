@@ -197,24 +197,30 @@ console.log(myKey);
 var selectedCountry;
 var selectedCategory;
 
-$('#countries').change(function () {
+document.getElementById('search').addEventListener('click', function(){
   selectedCountry = $(this).val();
+  selectedCategory = $(this).val();
+  console.log("Selected category: " + selectedCategory);
   console.log("Selected country: " + selectedCountry);
 });
 
-$('#categories').change(function () {
-  selectedCategory = $(this).val();
-  console.log("Selected category: " + selectedCategory);
-});
+// $("#search").click(function () {
+//   if (!selectedCountry || !selectedCategory) {
+//     console.log("Not all things have been selected");
+//     return;
+//   }
 
-$("#search").click(function () {
-  if (!selectedCountry || !selectedCategory) {
-    console.log("Not all things have been selected");
-    return;
+function displayData(ep, si, au){
+  if (ep === 'users') {
+  var url = `https://api.unsplash.com/users/${au}/?client_id=${myKey}`;
+  } else {
+   var url =  `https://api.unsplash.com/${ep}/?client_id=${myKey}`;
   }
+  console.log(ep, si, url);
 
   $.ajax({
-    url: `http://newsapi.org/v2/sources?language=en&apiKey=${myKey[0].key}&category=${selectedCategory}&country=${selectedCountry}`,
+
+    url: `http://newsapi.org/v2/sources?language=en&apiKey=${myKey[0].key}}&country=${selectedCountry}`,
     type: 'GET',
     data: 'json',
     success: function (data) {
