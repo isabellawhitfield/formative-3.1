@@ -194,56 +194,71 @@ console.log(myKey);
 //   }
 // ];
 
-var selectedCountry;
-var selectedCategory;
 
-document.getElementById('search').addEventListener('click', function(){
-  selectedCountry = $(this).val();
-  selectedCategory = $(this).val();
+document.getElementById('search').addEventListener('click', function () {
+  var selectedCountry = $('#countries').val();
+  var selectedCategory = $('#categories').val();
+  var selectedSource = $('#sources').val();
+
   console.log("Selected category: " + selectedCategory);
   console.log("Selected country: " + selectedCountry);
+  console.log("Selected source: " + selectedSource);
+
+  if (selectedCountry === 'all' && selectedCategory === 'all' && selectedSource === 'all') {
+    // Show error message if nothing is selected
+    $('#error-message').removeClass('d-none');
+    return;
+  } else {
+    // Hide error message
+    $('#error-message').addClass('d-none');
+  }
+
+  displayData(selectedCountry, selectedCategory, selectedSource)
 });
 
-// $("#search").click(function () {
-//   if (!selectedCountry || !selectedCategory) {
-//     console.log("Not all things have been selected");
-//     return;
-//   }
-
-function displayData(ep, si, au){
-  if (ep === 'users') {
-  var url = `https://api.unsplash.com/users/${au}/?client_id=${myKey}`;
+function displayData(country, category, source) {
+  var url;
+  if (source != 'all') {
+    url = `http://newsapi.org/v2/top-headlines?apiKey=${myKey[0].key}&sources=${source}`;
   } else {
-   var url =  `https://api.unsplash.com/${ep}/?client_id=${myKey}`;
+    url = `http://newsapi.org/v2/top-headlines?apiKey=${myKey[0].key}`;
+
+    if (country != 'all') {
+      url += `&country=${country}`
+    }
+
+    if (category != 'all') {
+      url += `&category=${category}`
+    }
   }
-  console.log(ep, si, url);
 
   $.ajax({
-
-    url: `http://newsapi.org/v2/sources?language=en&apiKey=${myKey[0].key}}&country=${selectedCountry}`,
+    url: url,
     type: 'GET',
     data: 'json',
     success: function (data) {
       console.log(data);
-      //     var i;
-      //     for (i=0; i<data.length; i++){
-      //         document.getElementById('result').innerHTML +=
-      //         '<div class="col col-sm-6 col-md-6 col-lg-4 mx-2 my-5">' +
-      //         '<h1>' + data[i].first_name + '</h1>' +
-      //         '<h2>' + data[i].gender + '</h2>' +
-      //         '<img class="img-thumbnail" src="' + data[i].avatar + '" alt="AVATAR">' +
 
+      for (var i = 0; i < data.articles.length; i++) {
+        var article = data.articles[i];
 
-
-      //         '</div>';
-      // }
-
-
+        $("#results").append(`
+          <div class="col-md-4 p-2">
+            <div class="card" style="height: 100%">
+              <img src="${article.urlToImage}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">${article.title}</h5>
+                <p class="card-text">${article.description}</p>
+              </div>
+            </div>
+          </div>
+        `);
+      }
     },
     error: function () {
       console.log('error');
     }
   });
-});
+};
 
 

@@ -18,69 +18,64 @@
 
   <!-- <img src="images/min/beach.jpg" alt="A sunny beach"> -->
 
-  <div class="container inline">
-    <select id="countries" class="form-control form-control-lg btn btn-warning">
-      <option>Select Country</option>
-      <option value="0">All</option>
-      <option value="ae">Argentina</option>
-      <option value="au">Australia</option>
-      <option value="at">Austria</option>
-      <option value="be">Belgium</option>
-      <option value="br">Brazil</option>
-      <option value="bg">Bulgaria</option>
-      <option value="ca">Canada</option>
-      <option value="cn">China</option>
-      <option value="co">Colombia</option>
-      <option value="cu">Cuba</option>
-      <option value="cz">Czechia</option>
-      <option value="eg">Egypt</option>
-      <option value="fr">France</option>
-      <option value="de">Germany</option>
-      <option value="gr">Greece</option>
-      <option value="hk">Hong Kong</option>
-      <option value="hu">Hungary</option>
-      <option value="in">India</option>
-      <option value="id">Indonesia</option>
-      <option value="ie">Ireland</option>
-      <option value="il">Israel</option>
-      <option value="it">Italy</option>
-      <option value="jp">Japan</option>
-      <option value="kr">Korea</option>
-      <option value="lv">Latvia</option>
-      <option value="lt">Lithuania</option>
-      <option value="my">Malaysia</option>
-      <option value="mx">Mexico</option>
-      <option value="ma">Morocco</option>
-    </select>
+  <div class="container clearfix">
+    <div class="row">
+      <div class="col-md-4">
+        <label for="countries">Select a Country</label>
+        <select id="countries" class="form-control form-control-lg btn btn-secondary">
+          <option value="all">All</option>
+          <option value="au">Australia</option>
+          <option value="fr">France</option>
+          <option value="gb">UK</option>
+          <option value="ie">Ireland</option>
+          <option value="in">India</option>
+          <option value="jp">Japan</option>
+          <option value="nz">New Zealand</option>
+          <option value="us">USA</option>
+        </select>
+      </div>
 
-    <select id="categories" class="form-control form-control-lg btn btn-info">
-      <option>Select Category</option>
-      <option value="business">Business</option>
-      <option value="entertainment">Entertainment</option>
-      <option value="general">General</option>
-      <option value="health">Health</option>
-      <option value="science">Science</option>
-      <option value="sports">Sports</option>
-      <option value="technology">Technology</option>
-    </select>
+      <div class="col-md-4">
+        <label for="categories">Select a Category</label>
+        <select id="categories" class="form-control form-control-lg btn btn-secondary">
+          <option value="all">All</option>
+          <option value="business">Business</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="general">General</option>
+          <option value="health">Health</option>
+          <option value="science">Science</option>
+          <option value="sports">Sports</option>
+          <option value="technology">Technology</option>
+        </select>
+      </div>
 
-    <select id="sources" class="form-control form-control-lg btn btn-info">
-      <option>Select News Source</option>
-      <option value="business">Business</option>
-      <option value="entertainment">Entertainment</option>
-      <option value="general">General</option>
-      <option value="health">Health</option>
-      <option value="science">Science</option>
-      <option value="sports">Sports</option>
-      <option value="technology">Technology</option>
-    </select>
+      <div class="col-md-1 text-center">OR</div>
 
-    <select id="sources" class="form-control form-control-lg btn btn-light">
-      <option>Select News Source</option>
-    </select>
+      <div class="col-md-3">
+        <label for="sources">Select a Source</label>
+        <select id="sources" class="form-control form-control-lg btn btn-secondary">
+          <option value="all">All</option>
+    			<option value="abc-news">ABC News</option>
+    			<option value="al-jazeera-english">Al Jazeera English</option>
+    			<option value="bbc-news">BBC News</option>
+    			<option value="buzzfeed">Buzzfeed</option>
+    			<option value="cbs-news">CBS News</option>
+    			<option value="cnn">CNN</option>
+    			<option value="google-news">Google News</option>
+    			<option value="national-geographic">National Geographic</option>
+    			<option value="nbc-news">NBC News</option>
+        </select>
+      </div>
+    </div>
 
-    <button id="search">Search</button>
+    <button id="search" type="button" class="btn btn-primary float-right mt-3">Search</button>
+    <div id="error-message" class="text-danger mt-3 text-center d-none">Please specify a country/category or a source</div>
   </div>
+
+  <div class="container">
+    <div id="results" class="row"></div>
+  </div>
+
 
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/@popperjs/core/dist/umd/popper.min.js"> </script>
