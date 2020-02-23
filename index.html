@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Document</title>
+  <title>NEWSCREAM</title>
 
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css">
@@ -14,7 +14,32 @@
 
 <body>
 
-  <h1 class="jumbotron">News Api</h1>
+
+  <h1 class="jumbotron text-center text-light">NEWSCREAM</h1>
+
+  <div class="container clearfix text-center">
+
+  <button type="button" class="btn btn-secondary mb-5" data-toggle="modal" data-target="#exampleModalScrollable">About The Creator</button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">About The Creator, Isabella Whitfield</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            I am a student studying web and UX design at yoobee. This page was created using data from newapi.org and 
+            components from bootstrap. This project was used to practice using NPM, Grunt, AJAX, and APIs. 
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- <img src="images/min/beach.jpg" alt="A sunny beach"> -->
 
@@ -68,7 +93,7 @@
       </div>
     </div>
 
-    <button id="search" type="button" class="btn btn-primary float-right mt-3">Search</button>
+    <button id="search" type="button" class="btn btn-danger float-right mt-3">Search</button>
     <div id="error-message" class="text-danger mt-3 text-center d-none">Please specify a country/category or a source</div>
   </div>
 
