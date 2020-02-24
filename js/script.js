@@ -239,9 +239,13 @@ function displayData(country, category, source) {
     success: function (data) {
       console.log(data);
 
+      // Empty results element first
+      $("#results").html('');
+
       for (var i = 0; i < data.articles.length; i++) {
         var article = data.articles[i];
 
+        // Append a new card for each article
         $("#results").append(`
           <div class="col-md-4 p-2">
             <div class="card" style="height: 100%">
