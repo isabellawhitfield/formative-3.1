@@ -16,6 +16,7 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         esversion: 6,
+        ignores: ['js/*.min.js'],
       },
       all: ['Gruntfile.js', 'js/*.js']
     },
@@ -39,15 +40,17 @@ module.exports = function (grunt) {
       lax: {
         options: {
           import: false,
-          'order-alphabetical': false
+          'order-alphabetical': false,
+          'universal-selector': false,
+          'box-sizing': false,
         },
-        src: ['css/*.css', '!*.min.css']
+        src: ['css/*.css', '!css/*.min.css']
       }
     },
     watch: {
       all: {
         files: ['js/*.js', 'sass/*.scss', 'css/style.css', 'index.html'],
-        tasks: ['uglify', 'cssmin', 'imagemin', 'htmlmin'],
+        tasks: ['uglify', 'cssmin', 'imagemin', 'htmlmin', 'jshint', 'sass', 'csslint'],
         options: {
           spawn: false,
         }
@@ -98,6 +101,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
   // Default task(s).
-  grunt.registerTask('ugly', ['uglify', 'cssmin', 'imagemin', 'htmlmin']);
+  grunt.registerTask('ugly', ['uglify', 'cssmin', 'imagemin', 'htmlmin', 'jshint', 'sass', 'csslint']);
   grunt.registerTask('default', ['watch']);
 };

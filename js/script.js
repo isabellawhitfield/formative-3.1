@@ -213,7 +213,7 @@ document.getElementById('search').addEventListener('click', function () {
     $('#error-message').addClass('d-none');
   }
 
-  displayData(selectedCountry, selectedCategory, selectedSource)
+  displayData(selectedCountry, selectedCategory, selectedSource);
 });
 
 function displayData(country, category, source) {
@@ -224,11 +224,11 @@ function displayData(country, category, source) {
     url = `http://newsapi.org/v2/top-headlines?apiKey=${myKey[0].key}`;
 
     if (country != 'all') {
-      url += `&country=${country}`
+      url += `&country=${country}`;
     }
 
     if (category != 'all') {
-      url += `&category=${category}`
+      url += `&category=${category}`;
     }
   }
 
@@ -259,6 +259,6 @@ function displayData(country, category, source) {
       console.log('error');
     }
   });
-};
+}
 
 

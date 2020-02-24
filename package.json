@@ -18,12 +18,10 @@
   "homepage": "https://github.com/isabellawhitfield/formative-3.1#readme",
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "grunt-html": "^12.1.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
-    "@popperjs/core": "^2.0.6",
     "grunt": "^1.0.4",
     "grunt-contrib-csslint": "^2.0.0",
     "grunt-contrib-cssmin": "^3.0.0",
